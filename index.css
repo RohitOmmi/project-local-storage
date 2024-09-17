@@ -1,0 +1,55 @@
+.bg-container{
+    background-color: #f0bbbb;
+    height: 100vh;
+}
+.checkbox-input{
+    width: 20px;
+  height: 20px;
+  margin-top: 12px;
+  margin-right: 12px;
+}
+.label-items-container{
+    background-color: #e6f6ff;
+    width: 100%;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #096f92;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 4px;
+}
+.label-items-container {
+    background-color: #e6f6ff;
+    width: 100%;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #096f92;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 4px;
+  } 
+.checkbox-label {
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: 400;
+    width: 82%;
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+  }
+  .del-icon-container {
+    text-align: right;
+    width: 18%;
+  }
+  .delete-icon {
+    padding: 15px;
+  }
+  
+  .checked {
+    text-decoration: line-through;
+  }
