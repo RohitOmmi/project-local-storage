@@ -21,13 +21,14 @@ function getTodoItemsFromLocalStorage(){
 
 let todoList =getTodoItemsFromLocalStorage();
 let todoCount = todoList.length;
+
 saveTodoButton.onclick=function(){
     localStorage.setItem('todoList',JSON.stringify(todoList));
 };
 
 function onTodoStatusChange( lableId){
     let lableElement= document.getElementById(lableId);
-    let selectionCheckbox= document.getElementById(checkBoxId)
+
     lableElement.classList.toggle('checked');
     
 };
@@ -38,10 +39,11 @@ function OnDelTodo(todoId){
 };
 function createAndAppendTodo(todo){
     let todoId= 'todo' + todo.uniqueNo;
-    let checkBoxId = 'checkbox' + todo.uniqueNo;
-    let lableId = 'label' + todo.uniqueNo;
+    let checkBoxId = 'todo' + todo.uniqueNo;
+    let lableId = 'todo' + todo.uniqueNo;
 
     let todoElement = document.createElement('li');
+    console.log(todoElement)
     todoElement.id=todoId;
     todoElement.classList.add('todo-item-container','d-flex','flex-row');
     todoItemsContainer.appendChild(todoElement);
@@ -62,7 +64,7 @@ function createAndAppendTodo(todo){
     todoElement.appendChild(labelContainer);
 
     let lableElement= document.createElement('label');
-    lableElement.setAttribute('for',checkBoxId)
+    lableElement.setAttribute('for','checkBoxId')
     lableElement.id=lableId;
     lableElement.classList.add('checkbox-label')
     lableElement.textContent=todo.text;
@@ -88,6 +90,7 @@ for( let todo of todoList){
 function onAddTodo(){
     let userInput = document.getElementById('inputArea');
     let userInputValue = userInput.Value;
+    console.log("SS",userInputValue)
     if(userInputValue===""){
         alert("enter valid text");
         return;
