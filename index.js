@@ -32,15 +32,44 @@ function onTodoStatusChange( lableId){
     lableElement.classList.toggle('checked');
     
 };
-function OnDelTodo(todoId){
+function OnDelTodo(todoId ,delIconId){
+//   console.log(typeof(delIconId))
     let todoElement= document.getElementById(todoId);
-    todoItemsContainer.removeChild(todoElement);
+    let data = localStorage.getItem('todoList');
+    let parsedData = JSON.parse(data);
+    localStorage.removeItem('todoList');
+ 
+    console.log(parsedData);
+
+    let newTodoList=[];
+    for (let todos  of parsedData){
+        // console.log(todos);
+        if(delIconId != todos.uniqueNo){
+            // console.log(delIconId)
+            // console.log(todos)
+            newTodoList.push(todos); 
+            // localStorage.setItem('newTodoList',JSON.stringify(newTodoList));
+           
+        }
+        else{
+            // localStorage.removeItem('todoList');
+
+             todoItemsContainer.removeChild(todoElement);
+        }
+    }
+    console.log(newTodoList)
+    localStorage.setItem("todoList", JSON.stringify(newTodoList))
+        
+    // let todoList = JSON.parse(localStorage.setItem("todoList", JSON.stringify(newTodoList)))
 
 };
+
+
 function createAndAppendTodo(todo){
-    let todoId= 'todo' + todo.uniqueNo;
+    let todoId= 'todo' + todo.uniqueNo;              
     let checkBoxId = 'todo' + todo.uniqueNo;
     let lableId = 'todo' + todo.uniqueNo;
+    let delIconId= todo.uniqueNo;
 
     let todoElement = document.createElement('li');
     console.log(todoElement)
@@ -76,9 +105,11 @@ function createAndAppendTodo(todo){
     labelContainer.appendChild(delIconContainer);
 
     let delIcon = document.createElement('i');
+    delIcon.id=delIconId;
     delIcon.classList.add('fa-solid','fa-trash','delete-icon');
     delIcon.onclick=function(){
-        OnDelTodo(todoId);
+        OnDelTodo(todoId,delIconId);
+        
     }
     delIconContainer.appendChild(delIcon);
 
@@ -89,6 +120,7 @@ for( let todo of todoList){
 }
 
 function onAddTodo(){
+    
     let userInput = document.getElementById('inputArea');
     let userInputValue = userInput.value;
     
@@ -100,7 +132,8 @@ function onAddTodo(){
     todoCount=todoCount+1;
     let newTodo={
         text:userInputValue,
-        uniqueNo:todoCount,
+        uniqueNo:"todo"+todoCount,
+        checkbox:false,
     };
     todoList.push(newTodo);
     createAndAppendTodo(newTodo);
