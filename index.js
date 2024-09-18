@@ -3,7 +3,7 @@ let saveTodoButton = document.getElementById('saveButton');
 let todoItemsContainer = document.getElementById('itemsContainer');
 
 function getTodoItemsFromLocalStorage(){
-    let stringifiedTodoList = localStorage.getItem("todoList");
+    let stringifiedTodoList =localStorage.getItem('todoList');
     console.log(stringifiedTodoList)
     let parsedTodoList= JSON.parse(stringifiedTodoList);
 
@@ -48,26 +48,27 @@ function createAndAppendTodo(todo){
     todoElement.classList.add('todo-item-container','d-flex','flex-row');
     todoItemsContainer.appendChild(todoElement);
 
-    let checkboxElemnt = document.createElement('input');
-    checkboxElemnt.type='checkbox';
-    checkboxElemnt.id=checkBoxId;
+    let inputboxElemnt = document.createElement('input');
+    inputboxElemnt.type='checkbox';
+    inputboxElemnt.id=checkBoxId;
 
-    checkboxElemnt.onclick=function(){
+    inputboxElemnt.onclick=function(){
         onTodoStatusChange( lableId);
 
     };
-    checkboxElemnt.classList.add('checkbox-input');
-    todoElement.appendChild(checkboxElemnt);
+    inputboxElemnt.classList.add('checkbox-input');
+    todoElement.appendChild(inputboxElemnt);
 
     let labelContainer = document.createElement('div')
     labelContainer.classList.add('label-items-container','d-flex','flex-row')
     todoElement.appendChild(labelContainer);
 
     let lableElement= document.createElement('label');
-    lableElement.setAttribute('for','checkBoxId')
+    lableElement.setAttribute('htmlFor',checkBoxId)
     lableElement.id=lableId;
     lableElement.classList.add('checkbox-label')
     lableElement.textContent=todo.text;
+    // lableElement.textContent="hye";
     labelContainer.appendChild(lableElement);
 
     let delIconContainer = document.createElement('div');
@@ -89,8 +90,9 @@ for( let todo of todoList){
 
 function onAddTodo(){
     let userInput = document.getElementById('inputArea');
-    let userInputValue = userInput.Value;
-    console.log("SS",userInputValue)
+    let userInputValue = userInput.value;
+    
+    /*console.log("SS",userInputValue)*/
     if(userInputValue===""){
         alert("enter valid text");
         return;
@@ -102,7 +104,7 @@ function onAddTodo(){
     };
     todoList.push(newTodo);
     createAndAppendTodo(newTodo);
-    userInput.Value = "";
+    userInput.value = "";
 }
 
 addTodoButton.onclick = function(){
