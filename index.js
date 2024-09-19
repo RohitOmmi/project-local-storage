@@ -4,7 +4,7 @@ let todoItemsContainer = document.getElementById('itemsContainer');
 
 function getTodoItemsFromLocalStorage(){
     let stringifiedTodoList =localStorage.getItem('todoList');
-    console.log(stringifiedTodoList)
+    // console.log(stringifiedTodoList)
     let parsedTodoList= JSON.parse(stringifiedTodoList);
 
     if(parsedTodoList===null){
@@ -39,7 +39,7 @@ function OnDelTodo(todoId ,delIconId){
     let parsedData = JSON.parse(data);
     localStorage.removeItem('todoList');
  
-    console.log(parsedData);
+    // console.log(parsedData);
 
     let newTodoList=[];
     for (let todos  of parsedData){
@@ -57,8 +57,9 @@ function OnDelTodo(todoId ,delIconId){
              todoItemsContainer.removeChild(todoElement);
         }
     }
-    console.log(newTodoList)
+    // console.log(newTodoList)
     localStorage.setItem("todoList", JSON.stringify(newTodoList))
+    
         
     // let todoList = JSON.parse(localStorage.setItem("todoList", JSON.stringify(newTodoList)))
 
@@ -110,6 +111,7 @@ function createAndAppendTodo(todo){
     delIcon.onclick=function(){
         OnDelTodo(todoId,delIconId);
         
+
     }
     delIconContainer.appendChild(delIcon);
 
@@ -128,6 +130,10 @@ function onAddTodo(){
     if(userInputValue===""){
         alert("enter valid text");
         return;
+    }
+    else
+    {
+        alert("click save button for storing");
     }
     todoCount=todoCount+1;
     let newTodo={
