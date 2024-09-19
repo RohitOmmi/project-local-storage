@@ -59,9 +59,10 @@ function OnDelTodo(todoId ,delIconId){
     }
     // console.log(newTodoList)
     localStorage.setItem("todoList", JSON.stringify(newTodoList))
-    
-        
+    var myAlert = document.getElementById('myAlert')
+    var bsAlert = new bootstrap.Alert(myAlert)
     // let todoList = JSON.parse(localStorage.setItem("todoList", JSON.stringify(newTodoList)))
+    alert(bsAlert)
 
 };
 
@@ -131,10 +132,7 @@ function onAddTodo(){
         alert("enter valid text");
         return;
     }
-    else
-    {
-        alert("click save button for storing");
-    }
+    
     todoCount=todoCount+1;
     let newTodo={
         text:userInputValue,
